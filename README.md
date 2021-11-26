@@ -1,3 +1,4 @@
+
 # #Windows
 > Windows 10  ---> SSD Nvme de 1 TB
 
@@ -17,6 +18,7 @@
 - [ ] Ubisoft
 - [ ] Discord
 - [ ] Google chrome
+- [ ] Nvidia Geforce Experience
 
 
 # #Linux
