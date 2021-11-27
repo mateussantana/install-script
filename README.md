@@ -1,4 +1,5 @@
 
+
 # #Windows
 > Windows 10  ---> SSD Nvme de 1 TB
 
@@ -7,18 +8,22 @@
 - [x] Downloads (?)
 
 ### Drivers
-- [ ] Nvdia GTX 970
-- [ ] Teclado Corsair
-- [ ] Mouse Logitech G600 (pendrive)
+- [x] Nvdia GTX 970
+- [x] Teclado Corsair
+- [x] Mouse Logitech G600 (pendrive)
 
 ### Softwares
-- [ ] Steam
+- [x] Steam
 - [ ] Origin
 - [ ] Epic Games
 - [ ] Ubisoft
-- [ ] Discord
-- [ ] Google chrome
-- [ ] Nvidia Geforce Experience
+- [x] Discord
+- [x] Google chrome
+- [x] Nvidia Geforce Experience
+
+### Configs
+- [x] Atualizações windows
+- [ ] Verificar as entradas de inicialização com o sistema
 
 
 # #Linux
@@ -71,3 +76,10 @@
 - [ ] SSH keys & configs (pendrive)
 - [ ] Docker aliases (composer, php, node)
 - [ ] Aliases
+
+
+# #Hardware & Bios
+- SSDs sata e nvme
+- Configuração de RAID 0
+- UEFI vs Legacy (especificar config da bios)
+- Ordem e forma de instalação do Windows e Linux
