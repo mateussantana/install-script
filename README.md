@@ -83,3 +83,7 @@
 - Configuração de RAID 0
 - UEFI vs Legacy (especificar config da bios)
 - Ordem e forma de instalação do Windows e Linux
+- Mobo drivers: [Aorus B450 Pro Wi-fi](https://www.gigabyte.com/br/Motherboard/B450-AORUS-PRO-WIFI-rev-1x/support#support-dl)
+	- Baixar: Driver > SATA RAID > AMD RAID Preinstall Driver
+	- Descompactar e executar **DPInst64** como administrador
+	- Em gerenciador de dispositivos: identificar o dispositivo *Controlador RAID* sem driver e instalar manualmente apontando para a pasta x64 (procurar subpastas)
