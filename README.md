@@ -14,16 +14,17 @@
 
 ### Softwares
 - [x] Steam
-- [ ] Origin
-- [ ] Epic Games
-- [ ] Ubisoft
+- [x] Origin
+- [x] Epic Games
+- [x] Ubisoft
 - [x] Discord
 - [x] Google chrome
 - [x] Nvidia Geforce Experience
 
 ### Configs
 - [x] Atualizações windows
-- [ ] Verificar as entradas de inicialização com o sistema
+- [x] Verificar as entradas de inicialização com o sistema
+- [x] Executar limpeza após atualizações windows update
 
 
 # #Linux
