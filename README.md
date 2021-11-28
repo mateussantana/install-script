@@ -1,82 +1,106 @@
 
 
+
 # #Windows
 > Windows 10  ---> SSD Nvme de 1 TB
 
 ### Backups
-- [x] Documentos
-- [x] Downloads (?)
+- [ ] Documentos
+- [ ] Downloads (?)
 
 ### Drivers
-- [x] Nvdia GTX 970
-- [x] Teclado Corsair
-- [x] Mouse Logitech G600 (pendrive)
+- [ ] Nvdia GTX 970
+- [ ] Teclado Corsair
+- [ ] Mouse Logitech G600 (pendrive)
 
 ### Softwares
-- [x] Steam
-- [x] Origin
-- [x] Epic Games
-- [x] Ubisoft
-- [x] Discord
-- [x] Google chrome
-- [x] Nvidia Geforce Experience
+- [ ] Steam
+- [ ] Origin
+- [ ] Epic Games
+- [ ] Ubisoft
+- [ ] Discord
+- [ ] Google chrome
+- [ ] Nvidia Geforce Experience
 
 ### Configs
-- [x] Atualizações windows
-- [x] Verificar as entradas de inicialização com o sistema
-- [x] Executar limpeza após atualizações windows update
+- [ ] Atualizações windows
+- [ ] Verificar as entradas de inicialização com o sistema
+- [ ] Executar limpeza após atualizações windows update
 
 
 # #Linux
 > Ubuntu 21.10 ---> SSD Sata de 480 GB
-> 2x SSD Sata de 240 GB em RAID 0 (?)
 
 ## 1. Pré formatação
 
 ### Backups
-- [x] Laravel projects: databases (docker)
-- [x] Laravel projects: arquivos *.env*
-- [x] SSH keys & configs
-- [x] Credenciais aws/azure
-- [x] Abas do chrome (?)
+- [ ] Laravel projects: databases (docker)
+- [ ] Laravel projects: arquivos *.env*
+- [ ] SSH keys & configs
+- [ ] Credenciais aws/azure
+- [ ] Abas do chrome (?)
 
 ## 2. Pós formatação
 
 ### Drivers
-- [ ] Nvidia GTX 970
+- [x] Nvidia GTX 970
 
 ### Softwares
 - UI
-	- [ ] Google Chrome
-	- [ ] PhpStorm
-	- [ ] Ray
-	- [ ] DataGrip
-	- [ ] VS Code
-	- [ ] Discord
-	- [ ] Postman
-	- [ ] RDM (redis ui)
-	- [ ] Terminator
-	- [ ] Spotify
-	- [ ] Steam
-	- [ ] Libre Office
-	- [ ] Gimp
-	- [ ] Ajustes (tweak)
+	- [x] [Google Chrome](https://www.google.pt/intl/pt-PT/chrome/)
+	- [x] PhpStorm
+	- [x] [Ray](https://spatie.be/profile/purchases)
+	- [x] DataGrip
+	- [x] VS Code
+	- [x] Discord
+	- [x] Postman
+	- [x] RDM (redis ui)
+	- [x] Terminator
+	- [x] Spotify
+	- [x] Steam (?)
+	- [x] Libre Office
+	- [x] Gimp
+	- [x] Ajustes (tweak)
 - CLI
-	- [ ] Git
-	- [ ] Docker
-	- [ ] Docker Compose
-	- [ ] Ngrok
-	- [ ] OMZ Shell [(OMZ + Spaceship + Dracula theme)](https://blog.rocketseat.com.br/terminal-com-oh-my-zsh-spaceship-dracula-e-mais/)
+	- [x] Git
+	- [x] [Docker](https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script) & [Docker Compose](https://docs.docker.com/compose/install/)
+		```bash
+		# docker
+		curl -fsSL https://get.docker.com -o get-docker.sh
+		sudo sh get-docker.sh
+		sudo groupadd docker
+		sudo usermod -aG docker $USER
+		# docker-compose
+		sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+		sudo chmod +x /usr/local/bin/docker-compose
+		```
+	- [x] [Ngrok](https://ngrok.com/download)
+		```bash
+		snap install ngrok
+		ngrok authtoken <token>
+		```
+	- [x] [ZSH](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH) & [OhMyZsh](https://github.com/ohmyzsh/ohmyzsh) & [Temas e fontes](https://blog.rocketseat.com.br/terminal-com-oh-my-zsh-spaceship-dracula-e-mais/)
+		```bash
+		# zsh
+		sudo apt install zsh
+		chsh -s $(which zsh)
+		# ohmyzsh
+		sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+		```
 
 ### Configs
-- [ ] Gnome extensions
-	- [ ] Resource Monitor
-	- [ ] Sound Input & Output Device Chooser
-	- [ ] Time++
-	- [ ] NetSpeed (?)
-- [ ] SSH keys & configs (pendrive)
+- [x] [Gnome extensions](https://extensions.gnome.org/)
+	- [x] [Vitals System Monitor](https://extensions.gnome.org/extension/1460/vitals/)
+		```bash
+		# https://github.com/corecoding/Vitals#installation
+		sudo apt install gir1.2-gtop-2.0 lm-sensors
+		```
+	- [x] [SerMon Service Monitor](https://extensions.gnome.org/extension/1804/sermon/)
+	- [x] [Sound Input & Output Device Chooser](https://extensions.gnome.org/extension/906/sound-output-device-chooser/)
+	- [x] [Time++](https://extensions.gnome.org/extension/1238/time/)
+- [x] SSH keys & configs (backup)
 - [ ] Docker aliases (composer, php, node)
-- [ ] Aliases
+- [ ] Aliases (em construção: meu repositório github)
 
 
 # #Hardware & Bios
