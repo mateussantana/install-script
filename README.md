@@ -14,13 +14,14 @@
 - [ ] Mouse Logitech G600 (pendrive)
 
 ### Softwares
-- [ ] Steam
-- [ ] Origin
-- [ ] Epic Games
-- [ ] Ubisoft
-- [ ] Discord
-- [ ] Google chrome
-- [ ] Nvidia Geforce Experience
+- [ ] [Google chrome](https://www.google.pt/intl/pt-PT/chrome/)
+- [ ] [Steam](https://store.steampowered.com/)
+- [ ] [Origin](https://www.origin.com/bra/pt-br/store/download)
+- [ ] [Epic Games](https://www.epicgames.com/store/pt-BR/)
+- [ ] [Ubisoft](https://ubisoftconnect.com/pt-BR/)
+- [ ] [Discord](https://discord.com/download)
+- [ ] [Whatsapp](https://www.whatsapp.com/download)
+- [ ] [Nvidia Geforce Experience](https://www.nvidia.com/pt-br/geforce/geforce-experience/)
 
 ### Configs
 - [ ] Atualizações windows
