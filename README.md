@@ -106,6 +106,8 @@
 
 # #Observações
 - Bios Storage mode: UEFI only
-- RAID 0: Não consegui fazer o ubuntu enxergar o array raid. Windows funcionou normalmente) 
-- Ordem de instalação: Windows ---> Linux
 - Mobo drivers: [Aorus B450 Pro Wi-fi](https://www.gigabyte.com/br/Motherboard/B450-AORUS-PRO-WIFI-rev-1x/support#support-dl)
+- Ordem de instalação: Windows ---> Linux
+- RAID 0: Não consegui fazer o ubuntu enxergar o array raid. Windows funcionou normalmente)
+	- Vídeo de referência: <https://www.youtube.com/watch?v=IUNtbe9Az9o>
+	- [Prints com testes nos SSDs](/PRINTS_SSD_TESTS.md)
