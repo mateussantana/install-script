@@ -61,6 +61,7 @@
 	- [ ] Steam (?)
 	- [ ] Libre Office
 	- [ ] Gimp
+	- [ ] Menu Editor
 	- [ ] Ajustes (tweak)
 - CLI
 	- [ ] Git
