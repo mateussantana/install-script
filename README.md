@@ -89,6 +89,11 @@
 		# ohmyzsh
 		sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 		```
+	- [ ] [OMZ Dracula theme](https://draculatheme.com/terminator)
+		```bash
+		git clone https://github.com/dracula/terminator.git
+		cd terminator && ./install.sh
+		```
 
 ### Configs
 - [ ] [Gnome extensions](https://extensions.gnome.org/)
