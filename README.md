@@ -115,4 +115,4 @@
 - Limitações das portas SATA3:
 	- Ao utilizar a porta M2A (slot de cima) as portas ASATA3-0 e ASATA3-1 (as duas de frente) são desabilitadas;
 	- Ao utilizar a porta M2B (slot de baixo) as portas SATA3-2 e SATA3-3 (laterais superiores) são desabilitadas.
-	[![SATA3 limitações](/images/limitacao-sata-ports.png)](https://www.gigabyte.com/br/Motherboard/B450-AORUS-PRO-WIFI-rev-1x/support#support-manual)
+	[![SATA3 limitações](/docs/images/limitacao-sata-ports.png)](https://www.gigabyte.com/br/Motherboard/B450-AORUS-PRO-WIFI-rev-1x/support#support-manual)
