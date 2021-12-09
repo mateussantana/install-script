@@ -14,13 +14,19 @@ BOLD=`printf '\033[1m'`
 RESET=`printf '\033[m'`
 
 # Setup emojis
-EMOJI_CHECK=`printf '\U2705\n'`
-EMOJI_CROSS=`printf '\U274C\n'`
+EMOJI_SUCCESS=`printf '\U2705\n'`
+EMOJI_ERROR=`printf '\U1F6A8\n'`
 EMOJI_WARNING=`printf '\U26A0\n'`
+EMOJI_MAGIC_WAND=`printf '\U1FA84\n'`
+EMOJI_GIT=`printf '\U1F500\n'`
+EMOJI_DOCKER=`printf '\U1F433\n'`
+EMOJI_NGROK=`printf '\U1F196\n'`
+EMOJI_ZSH=`printf '\U1F5A5\n'`
+EMOJI_OMZ=`printf '\U1F9B8\n'`
 
 # Verify OS
 if  [[ ! "$(uname -s)" =~ "Linux" ]]; then
-    echo "$EMOJI_CROSS ${RED}Seems like you are not in a Linux environment.${RESET}"
+    echo "$EMOJI_ERROR ${RED}Seems like you are not in a Linux environment.${RESET}"
     echo "Aborted!"
     exit 1
 fi
@@ -48,22 +54,35 @@ fi
 # Confirm sudo privileges
 sudo -v
 if [ $? -ne 0 ]; then
-    echo "$EMOJI_CROSS ${RED}You need sudo privileges.${RESET}"
+    echo "$EMOJI_ERROR ${RED}You need sudo privileges.${RESET}"
     echo "Aborted!"
     exit 1
 fi
 
+# Confirm to proceed
+echo ""
+echo "+-----------------------------------------------------+"
+echo "|       $EMOJI_MAGIC_WAND  WELCOME TO MY INSTALLATION SCRIPT $EMOJI_MAGIC_WAND        |"
+echo "|                                                     |"
+echo "| This script will do the following tasks:            |"
+echo "|  $EMOJI_GIT Install Git                                     |"
+echo "|  $EMOJI_DOCKER Install Docker & docker-compose                 |"
+echo "|  $EMOJI_NGROK Install Ngrok                                   |"
+echo "|  $EMOJI_ZSH  Install ZSH                                     |"
+echo "|  $EMOJI_OMZ Install OhMyZsh                                 |"
+echo "|  @ Install OhMyZsh theme                            |"
+echo "|  @ Install OhMyZsh plugins                          |"
+echo "+-----------------------------------------------------+"
+
+# Git
 if $(gits --version > /dev/null 2>&1); then
-    echo "$EMOJI_CHECK Git is already installed"
+    echo "$EMOJI_SUCCESS Git is already installed"
 else
-    echo "${RED}Git is not installed!"
+    echo "$EMOJI_GIT Git is not installed!"
 fi
 
+echo "$EMOJI_GIT Executing..."
 exit 0;
 
-echo "Executing..."
-
-# Confirm to proceed 
-sudo apt-get update
-
 # Install dependencies
+sudo apt-get update
