@@ -60,19 +60,27 @@ if [ $? -ne 0 ]; then
 fi
 
 # Confirm to proceed
-echo ""
-echo "+-----------------------------------------------------+"
-echo "|       $EMOJI_MAGIC_WAND  WELCOME TO MY INSTALLATION SCRIPT $EMOJI_MAGIC_WAND        |"
-echo "|                                                     |"
-echo "| This script will do the following tasks:            |"
-echo "|  $EMOJI_GIT Install Git                                     |"
-echo "|  $EMOJI_DOCKER Install Docker & docker-compose                 |"
-echo "|  $EMOJI_NGROK Install Ngrok                                   |"
-echo "|  $EMOJI_ZSH  Install ZSH                                     |"
-echo "|  $EMOJI_OMZ Install OhMyZsh                                 |"
-echo "|  @ Install OhMyZsh theme                            |"
-echo "|  @ Install OhMyZsh plugins                          |"
-echo "+-----------------------------------------------------+"
+printf "\n"
+printf "╔═════════════════════════════════════════════════════╗\n"
+printf "║        %s♣ WELCOME TO MY INSTALLATION SCRIPT ♣%s        ║\n" $BOLD $RESET
+printf "║                                                     ║\n"
+printf "║ This script will do the following tasks:            ║\n"
+printf "║  → Install %sGit%s                                      ║\n" ${BOLD}${BLUE} $RESET
+printf "║  → Install %sDocker%s & %sdocker-compose%s                  ║\n" ${BOLD}${BLUE} $RESET ${BOLD}${BLUE} $RESET
+printf "║  → Install %sNgrok%s                                    ║\n" ${BOLD}${BLUE} $RESET
+printf "║  → Install %sZSH%s                                      ║\n" ${BOLD}${BLUE} $RESET
+printf "║  → Install %sOhMyZsh%s                                  ║\n" ${BOLD}${BLUE} $RESET
+printf "║  → Install %sOhMyZsh theme%s                            ║\n" ${BOLD}${BLUE} $RESET
+printf "║  → Install %sOhMyZsh plugins%s                          ║\n" ${BOLD}${BLUE} $RESET
+printf "╚═════════════════════════════════════════════════════╝\n"
+printf "\n"
+
+echo -n "${YELLOW}Are you want to proceed? ${RESET}(y/n) "
+read ANSWER
+if [[ ! $ANSWER =~ ^[yY]$ ]]; then
+    echo "Ok. Aborted!"
+    exit 0
+fi
 
 # Git
 if $(gits --version > /dev/null 2>&1); then
@@ -81,7 +89,7 @@ else
     echo "$EMOJI_GIT Git is not installed!"
 fi
 
-echo "$EMOJI_GIT Executing..."
+echo " Executing..."
 exit 0;
 
 # Install dependencies
