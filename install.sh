@@ -59,6 +59,7 @@ printf "╔═══════════════════════
 printf "║        %s♣%s WELCOME TO MY INSTALLATION SCRIPT %s♣%s        ║\n" ${BOLD}${RED} ${RESET}${BOLD} ${RED} $RESET
 printf "║                                                     ║\n"
 printf "║ This script will do the following tasks:            ║\n"
+printf "║  → Install some %ssystem dependencies%s                 ║\n" ${BOLD}${GREEN} $RESET
 printf "║  → Install %sGit%s                                      ║\n" ${BOLD}${GREEN} $RESET
 printf "║  → Install %sDocker%s & %sdocker-compose%s                  ║\n" ${BOLD}${GREEN} $RESET ${BOLD}${GREEN} $RESET
 printf "║  → Install %sNgrok%s                                    ║\n" ${BOLD}${GREEN} $RESET
@@ -68,6 +69,7 @@ printf "║  → Install %sOhMyZsh theme%s                            ║\n" ${B
 printf "║  → Install %sOhMyZsh plugins%s                          ║\n" ${BOLD}${GREEN} $RESET
 printf "║  → Install %sPHP 8%s                                    ║\n" ${BOLD}${GREEN} $RESET
 printf "║  → Install %sComposer%s                                 ║\n" ${BOLD}${GREEN} $RESET
+printf "║  → Set your default shell to %szsh%s                    ║\n" ${BOLD}${GREEN} $RESET
 printf "╚═════════════════════════════════════════════════════╝\n"
 
 # Confirm to proceed
@@ -208,16 +210,30 @@ else
 fi
 
 # Final adjustments
-echo -n "${YELLOW}Do you want to change your default shell to zsh? ${RESET}(y/n) "
-read ANSWER
-if [[ $ANSWER =~ ^[yY]$ ]]; then
-    CMD='chsh -s $(which zsh)'
-    echo "${GREEN}${CMD}${RESET}"
-    eval $CMD || echo "$EMOJI_ERROR ${RED}I can't change your default shell automatically. You will need to do it manually!${RESET}"
-    echo ""
+if [[ $(which zsh) == $SHELL ]]; then
+    printf "%s ZSH is already your default shell\n" $EMOJI_SUCCESS
+else
+    echo -n "${YELLOW}Do you want to change your default shell to zsh? ${RESET}(y/n) "
+    read ANSWER
+    if [[ $ANSWER =~ ^[yY]$ ]]; then
+        CMD='chsh -s $(which zsh)'
+        echo "${GREEN}${CMD}${RESET}"
+        eval $CMD || echo "$EMOJI_ERROR ${RED}I can't change your default shell automatically. You will need to do it manually!${RESET}"
+    fi
 fi
 
 # Final warnings
+printf "\n"
+printf "╔═════════════════════════════════════════════════════╗\n"
+printf "║            🥳 🎉  %sCONGRATULATIONS%s  🎉 🥳            ║\n" ${BOLD}${YELLOW} $RESET
+printf "║                                                     ║\n"
+printf "║             All tasks ran successfully              ║\n"
+printf "║                                                     ║\n"
+printf "║ → To use ngrok properly consider to execute:        ║\n"
+printf "║   %sngrok authtoken <your-personal-token>%s             ║\n" $YELLOW $RESET
+printf "╚═════════════════════════════════════════════════════╝\n"
+
 printf "%s%s Some final advices: ngrok authtoken <token>...%s\n" $EMOJI_WARNING $YELLOW $RESET
+printf "\n"
 
 exit 0;
