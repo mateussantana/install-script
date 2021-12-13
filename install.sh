@@ -211,8 +211,28 @@ else
 fi
 
 # Oh-My-Zsh plugins
+if [ -d $HOME/.local/share/zinit/zinit.git ]; then
+    printf "%s OhMyZsh zinit plugin is already installed\n" $EMOJI_SUCCESS
+else
+    printf "%s Installing OhMyZsh %szinit plugin%s...\n" $EMOJI_OMZ_PLUGIN $GREEN $RESET
+    CMD='sh -c "export NO_INPUT=yes; $(curl -fsSL https://git.io/zinit-install)"'
+    echo "${GREEN}${CMD}${RESET}"
+    eval $CMD || exit 2
+    # Syntax highlighting plugin
+    CMD="echo 'zinit light zdharma-continuum/fast-syntax-highlighting' >> $HOME/.zshrc"
+    echo "${GREEN}${CMD}${RESET}"
+    eval $CMD
+    # Autosuggestions plugin
+    CMD="echo 'zinit light zsh-users/zsh-autosuggestions' >> $HOME/.zshrc"
+    echo "${GREEN}${CMD}${RESET}"
+    eval $CMD
+    # Completions plugin
+    CMD="echo 'zinit light zsh-users/zsh-completions' >> $HOME/.zshrc"
+    echo "${GREEN}${CMD}${RESET}"
+    eval $CMD
+    echo ""
+fi
 
-exit 0;
 # PHP 8.1
 if $(php --version > /dev/null 2>&1); then
     printf "%s PHP is already installed\n" $EMOJI_SUCCESS
@@ -266,7 +286,7 @@ else
     fi
 fi
 
-# Final warnings
+# Conclusion
 printf "\n"
 printf "╔═════════════════════════════════════════════════════╗\n"
 printf "║            🥳 🎉  %sCONGRATULATIONS%s  🎉 🥳            ║\n" $BOLD $RESET
@@ -280,8 +300,14 @@ printf "║ → To know more about Dracula themes:                ║\n"
 printf "║   %s %shttps://draculatheme.com/terminator%s            ║\n" $EMOJI_DRACULA $YELLOW $RESET
 printf "║                                                     ║\n"
 printf "╚═════════════════════════════════════════════════════╝\n"
-
-printf "%s%s (ASK) Consider to restart your computer...%s\n" $EMOJI_WARNING $YELLOW $RESET
 printf "\n"
 
+echo "$EMOJI_WARNING To some changes take effect you'll need to restart computer!"
+echo -n "${YELLOW}Restart now? ${RESET}(y/n) "
+read ANSWER
+if [[ $ANSWER =~ ^[yY]$ ]]; then
+    sudo shutdown -r now
+fi
+
+echo ""
 exit 0;
