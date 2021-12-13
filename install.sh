@@ -15,13 +15,15 @@ RESET=`printf '\033[m'`
 
 # Setup emojis
 EMOJI_SUCCESS=✅
-EMOJI_ERROR=🚫
-EMOJI_WARNING=⚠
+EMOJI_ERROR=🔴
+EMOJI_WARNING=🟡
+EMOJI_WELCOME=🚀
 EMOJI_REFRESH=🔄
 EMOJI_GIT=🔀
 EMOJI_DOCKER=🐳
 EMOJI_NGROK=🆖
-EMOJI_ZSH=🖥
+EMOJI_ZSH=🐚
+EMOJI_TERMINATOR=🖥
 EMOJI_OMZ=🧙
 EMOJI_PHP=🐘
 EMOJI_COMPOSER=🪄
@@ -49,25 +51,24 @@ if  [[ ! "$(uname -v)" =~ "Ubuntu" ]]; then
         echo "Aborted!"
         exit 0
     fi
-
-    echo ""
 fi
 
 # Script information
 printf "\n"
 printf "╔═════════════════════════════════════════════════════╗\n"
-printf "║        %s♣%s WELCOME TO MY INSTALLATION SCRIPT %s♣%s        ║\n" ${BOLD}${RED} ${RESET}${BOLD} ${RED} $RESET
+printf "║        %s %sWELCOME TO MY INSTALLATION SCRIPT%s %s      ║\n" $EMOJI_WELCOME $BOLD $RESET $EMOJI_WELCOME
 printf "║                                                     ║\n"
 printf "║ This script will do the following tasks:            ║\n"
 printf "║  → Install some %ssystem dependencies%s                 ║\n" ${BOLD}${GREEN} $RESET
 printf "║  → Install %sGit%s                                      ║\n" ${BOLD}${GREEN} $RESET
+printf "║  → Install %sTerminator%s (with dracula theme)          ║\n" ${BOLD}${GREEN} $RESET
 printf "║  → Install %sDocker%s & %sdocker-compose%s                  ║\n" ${BOLD}${GREEN} $RESET ${BOLD}${GREEN} $RESET
 printf "║  → Install %sNgrok%s                                    ║\n" ${BOLD}${GREEN} $RESET
 printf "║  → Install %sZSH%s                                      ║\n" ${BOLD}${GREEN} $RESET
 printf "║  → Install %sOhMyZsh%s                                  ║\n" ${BOLD}${GREEN} $RESET
 printf "║  → Install %sOhMyZsh theme%s                            ║\n" ${BOLD}${GREEN} $RESET
 printf "║  → Install %sOhMyZsh plugins%s                          ║\n" ${BOLD}${GREEN} $RESET
-printf "║  → Install %sPHP 8%s                                    ║\n" ${BOLD}${GREEN} $RESET
+printf "║  → Install %sPHP 8.1%s                                  ║\n" ${BOLD}${GREEN} $RESET
 printf "║  → Install %sComposer%s                                 ║\n" ${BOLD}${GREEN} $RESET
 printf "║  → Set your default shell to %szsh%s                    ║\n" ${BOLD}${GREEN} $RESET
 printf "╚═════════════════════════════════════════════════════╝\n"
@@ -78,8 +79,6 @@ read ANSWER
 if [[ ! $ANSWER =~ ^[yY]$ ]]; then
     echo "Ok. Aborted!"
     exit 0
-else
-    echo ""
 fi
 
 # Confirm sudo privileges
@@ -108,6 +107,24 @@ else
     CMD='sudo apt-get install git -y'
     echo "${GREEN}${CMD}${RESET}"
     $CMD || exit 2
+    echo ""
+fi
+
+# Terminator
+if $(terminator --version > /dev/null 2>&1); then
+    printf "%s Terminator is already installed\n" $EMOJI_SUCCESS
+else
+    printf "%s Installing %sTerminator%s...\n" $EMOJI_TERMINATOR $GREEN $RESET
+    CMD='sudo apt-get install terminator -y'
+    echo "${GREEN}${CMD}${RESET}"
+    $CMD || exit 2
+    # Terminator dracula theme: https://draculatheme.com/terminator
+    if [ -f "terminator.config"]; then
+        mkdir -p ~/.config/terminator && \
+        cp -rf terminator.config ~/.config/terminator/config
+    else
+        # Copy from raw github...
+    fi
     echo ""
 fi
 
@@ -233,7 +250,7 @@ printf "║ → To use ngrok properly consider to execute:        ║\n"
 printf "║   %sngrok authtoken <your-personal-token>%s             ║\n" $YELLOW $RESET
 printf "╚═════════════════════════════════════════════════════╝\n"
 
-printf "%s%s Some final advices: ngrok authtoken <token>...%s\n" $EMOJI_WARNING $YELLOW $RESET
+printf "%s%s Consider to restart your computer...%s\n" $EMOJI_WARNING $YELLOW $RESET
 printf "\n"
 
 exit 0;
