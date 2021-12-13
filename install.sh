@@ -26,6 +26,8 @@ EMOJI_NGROK=🆖
 EMOJI_ZSH=🐚
 EMOJI_TERMINATOR=🖥
 EMOJI_OMZ=🧙
+EMOJI_OMZ_THEME=🎭
+EMOJI_OMZ_PLUGIN=🔌
 EMOJI_PHP=🐘
 EMOJI_COMPOSER=🪄
 
@@ -67,7 +69,7 @@ printf "║  → Install %sDocker%s & %sdocker-compose%s                  ║\n"
 printf "║  → Install %sNgrok%s                                    ║\n" ${BOLD}${GREEN} $RESET
 printf "║  → Install %sZSH%s                                      ║\n" ${BOLD}${GREEN} $RESET
 printf "║  → Install %sOhMyZsh%s                                  ║\n" ${BOLD}${GREEN} $RESET
-printf "║  → Install %sOhMyZsh theme%s                            ║\n" ${BOLD}${GREEN} $RESET
+printf "║  → Install %sOhMyZsh theme%s (spaceship)                ║\n" ${BOLD}${GREEN} $RESET
 printf "║  → Install %sOhMyZsh plugins%s                          ║\n" ${BOLD}${GREEN} $RESET
 printf "║  → Install %sPHP 8.1%s                                  ║\n" ${BOLD}${GREEN} $RESET
 printf "║  → Install %sComposer%s                                 ║\n" ${BOLD}${GREEN} $RESET
@@ -120,7 +122,6 @@ else
     echo "${GREEN}${CMD}${RESET}"
     $CMD || exit 2
     # Terminator custom config with dracula theme
-    # ref: https://draculatheme.com/terminator
     CMD='mkdir -p ~/.config/terminator && '
     if [ -f "terminator.config" ]; then
         CMD+='cp -rf terminator.config ~/.config/terminator/config'
@@ -145,7 +146,7 @@ else
     $CMD || exit 2
     CMD='sudo groupadd docker && sudo usermod -aG docker $USER'
     echo "${GREEN}${CMD}${RESET}"
-    #$CMD || exit 2
+    eval $CMD
     CMD='sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose'
     echo "${GREEN}${CMD}${RESET}"
     eval $CMD || exit 2
@@ -191,9 +192,27 @@ else
 fi
 
 # Oh-My-Zsh theme
+ZSH_CUSTOM="${HOME}/.oh-my-zsh/custom"
+ZSH_CUSTOM_THEME="${ZSH_CUSTOM}/themes/spaceship-prompt"
+if [ -d $ZSH_CUSTOM_THEME ]; then
+    printf "%s OhMyZsh custom theme is already installed\n" $EMOJI_SUCCESS
+else
+    printf "%s Installing OhMyZsh %sspaceship custom theme%s...\n" $EMOJI_OMZ_THEME $GREEN $RESET
+    CMD='git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM_THEME"'
+    echo "${GREEN}${CMD}${RESET}"
+    eval $CMD || exit 2
+    CMD='ln -s "${ZSH_CUSTOM_THEME}/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"'
+    echo "${GREEN}${CMD}${RESET}"
+    eval $CMD
+    CMD="sed -i '/^ZSH_THEME=/c\ZSH_THEME=\"spaceship\"' ~/.zshrc"
+    echo "${GREEN}${CMD}${RESET}"
+    eval $CMD
+    echo ""
+fi
 
 # Oh-My-Zsh plugins
 
+exit 0;
 # PHP 8.1
 if $(php --version > /dev/null 2>&1); then
     printf "%s PHP is already installed\n" $EMOJI_SUCCESS
