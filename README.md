@@ -47,7 +47,7 @@
 - [ ] Nvidia GTX 970
 
 ### Softwares
-- UI
+- UI (can be installed via Ubuntu Software app)
 	- [ ] [Google Chrome](https://www.google.pt/intl/pt-PT/chrome/)
 	- [ ] PhpStorm
 	- [ ] [Ray](https://spatie.be/profile/purchases)
@@ -78,7 +78,10 @@
 		```
 	- [ ] [Ngrok](https://ngrok.com/download)
 		```bash
-		snap install ngrok
+		curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null
+		echo "deb https://ngrok-agent.s3.amazonaws.com buster main" | sudo tee /etc/apt/sources.list.d/ngrok.list
+		sudo apt update && sudo apt install ngrok   
+              
 		ngrok authtoken <token>
 		```
 	- [ ] [ZSH](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH) & [OhMyZsh](https://github.com/ohmyzsh/ohmyzsh) & [Temas e fontes](https://blog.rocketseat.com.br/terminal-com-oh-my-zsh-spaceship-dracula-e-mais/)
@@ -116,8 +119,8 @@
 - Ordem de instalação: Windows ---> Linux
 - RAID 0: Não consegui fazer o ubuntu enxergar o array raid. Windows funcionou normalmente)
 	- Vídeo de referência: <https://www.youtube.com/watch?v=IUNtbe9Az9o>;
-	- [Prints com testes nos SSDs](/PRINTS_SSD_TESTS.md).
+	- [Prints com testes nos SSDs](/docs/PRINTS_SSD_TESTS.md).
 - Limitações das portas SATA3:
 	- Ao utilizar a porta M2A (slot de cima) as portas ASATA3-0 e ASATA3-1 (as duas de frente) são desabilitadas;
 	- Ao utilizar a porta M2B (slot de baixo) as portas SATA3-2 e SATA3-3 (laterais superiores) são desabilitadas.
-	[![SATA3 limitações](/images/limitacao-sata-ports.png)](https://www.gigabyte.com/br/Motherboard/B450-AORUS-PRO-WIFI-rev-1x/support#support-manual)
+	[![SATA3 limitações](/docs/images/limitacao-sata-ports.png)](https://www.gigabyte.com/br/Motherboard/B450-AORUS-PRO-WIFI-rev-1x/support#support-manual)
