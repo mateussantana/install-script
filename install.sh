@@ -24,7 +24,7 @@ EMOJI_GIT=🔀
 EMOJI_DOCKER=🐳
 EMOJI_NGROK=🆖
 EMOJI_ZSH=🐚
-EMOJI_TERMINATOR="🖥"
+EMOJI_TERMINATOR=🖥
 EMOJI_OMZ=🧙
 EMOJI_PHP=🐘
 EMOJI_COMPOSER=🪄
@@ -239,22 +239,26 @@ else
     if [[ $ANSWER =~ ^[yY]$ ]]; then
         CMD='chsh -s $(which zsh)'
         echo "${GREEN}${CMD}${RESET}"
-        eval $CMD || echo "$EMOJI_ERROR ${RED}I can't change your default shell automatically. You will need to do it manually!${RESET}"
+        if eval $CMD; then
+            echo "$EMOJI_SUCCESS Default shell changed successfully!"
+        else
+            echo "$EMOJI_ERROR ${RED}I can't change your default shell automatically. You will need to do it manually!${RESET}"
+        fi
     fi
 fi
 
 # Final warnings
 printf "\n"
 printf "╔═════════════════════════════════════════════════════╗\n"
-printf "║            🥳 🎉  %sCONGRATULATIONS%s  🎉 🥳            ║\n" ${BOLD}${YELLOW} $RESET
+printf "║            🥳 🎉  %sCONGRATULATIONS%s  🎉 🥳            ║\n" $BOLD $RESET
 printf "║                                                     ║\n"
 printf "║             All tasks ran successfully              ║\n"
 printf "║                                                     ║\n"
 printf "║ → To use ngrok properly consider to execute:        ║\n"
-printf "║   %sngrok authtoken <your-personal-token>%s             ║\n" $YELLOW $RESET
+printf "║      %sngrok authtoken <your-personal-token>%s          ║\n" $YELLOW $RESET
 printf "║                                                     ║\n"
 printf "║ → To know more about Dracula themes:                ║\n"
-printf "║   %https://draculatheme.com/terminator%s                ║\n" $YELLOW $RESET
+printf "║   %s %shttps://draculatheme.com/terminator%s            ║\n" $EMOJI_DRACULA $YELLOW $RESET
 printf "║                                                     ║\n"
 printf "╚═════════════════════════════════════════════════════╝\n"
 
