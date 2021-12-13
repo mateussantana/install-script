@@ -18,12 +18,13 @@ EMOJI_SUCCESS=✅
 EMOJI_ERROR=🔴
 EMOJI_WARNING=🟡
 EMOJI_WELCOME=🚀
+EMOJI_DRACULA=🧛
 EMOJI_REFRESH=🔄
 EMOJI_GIT=🔀
 EMOJI_DOCKER=🐳
 EMOJI_NGROK=🆖
 EMOJI_ZSH=🐚
-EMOJI_TERMINATOR=🖥
+EMOJI_TERMINATOR="🖥"
 EMOJI_OMZ=🧙
 EMOJI_PHP=🐘
 EMOJI_COMPOSER=🪄
@@ -111,20 +112,23 @@ else
 fi
 
 # Terminator
-if $(terminator --version > /dev/null 2>&1); then
+if which terminator > /dev/null 2>&1; then
     printf "%s Terminator is already installed\n" $EMOJI_SUCCESS
 else
     printf "%s Installing %sTerminator%s...\n" $EMOJI_TERMINATOR $GREEN $RESET
     CMD='sudo apt-get install terminator -y'
     echo "${GREEN}${CMD}${RESET}"
     $CMD || exit 2
-    # Terminator dracula theme: https://draculatheme.com/terminator
-    if [ -f "terminator.config"]; then
-        mkdir -p ~/.config/terminator && \
-        cp -rf terminator.config ~/.config/terminator/config
+    # Terminator custom config with dracula theme
+    # ref: https://draculatheme.com/terminator
+    CMD='mkdir -p ~/.config/terminator && '
+    if [ -f "terminator.config" ]; then
+        CMD+='cp -rf terminator.config ~/.config/terminator/config'
     else
-        # Copy from raw github...
+        CMD+='curl -fsSL https://raw.githubusercontent.com/mateussantana/install-script/master/terminator.config -o ~/.config/terminator/config'
     fi
+    echo "${GREEN}${CMD}${RESET}"
+    eval $CMD || exit 2
     echo ""
 fi
 
@@ -248,9 +252,13 @@ printf "║             All tasks ran successfully              ║\n"
 printf "║                                                     ║\n"
 printf "║ → To use ngrok properly consider to execute:        ║\n"
 printf "║   %sngrok authtoken <your-personal-token>%s             ║\n" $YELLOW $RESET
+printf "║                                                     ║\n"
+printf "║ → To know more about Dracula themes:                ║\n"
+printf "║   %https://draculatheme.com/terminator%s                ║\n" $YELLOW $RESET
+printf "║                                                     ║\n"
 printf "╚═════════════════════════════════════════════════════╝\n"
 
-printf "%s%s Consider to restart your computer...%s\n" $EMOJI_WARNING $YELLOW $RESET
+printf "%s%s (ASK) Consider to restart your computer...%s\n" $EMOJI_WARNING $YELLOW $RESET
 printf "\n"
 
 exit 0;
