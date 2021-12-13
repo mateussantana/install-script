@@ -198,10 +198,10 @@ if [ -d $ZSH_CUSTOM_THEME ]; then
     printf "%s OhMyZsh custom theme is already installed\n" $EMOJI_SUCCESS
 else
     printf "%s Installing OhMyZsh %sspaceship custom theme%s...\n" $EMOJI_OMZ_THEME $GREEN $RESET
-    CMD='git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM_THEME"'
+    CMD="git clone https://github.com/denysdovhan/spaceship-prompt.git \"$ZSH_CUSTOM_THEME\""
     echo "${GREEN}${CMD}${RESET}"
     eval $CMD || exit 2
-    CMD='ln -s "${ZSH_CUSTOM_THEME}/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"'
+    CMD="ln -s \"${ZSH_CUSTOM_THEME}/spaceship.zsh-theme\" \"$ZSH_CUSTOM/themes/spaceship.zsh-theme\""
     echo "${GREEN}${CMD}${RESET}"
     eval $CMD
     CMD="sed -i '/^ZSH_THEME=/c\ZSH_THEME=\"spaceship\"' ~/.zshrc"
