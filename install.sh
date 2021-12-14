@@ -144,7 +144,7 @@ else
     CMD='sudo sh /tmp/get-docker.sh'
     echo "${GREEN}${CMD}${RESET}"
     $CMD || exit 2
-    CMD='sudo groupadd docker && sudo usermod -aG docker $USER'
+    CMD='sudo groupadd docker; sudo usermod -aG docker $USER'
     echo "${GREEN}${CMD}${RESET}"
     eval $CMD
     CMD='sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose'
@@ -214,11 +214,13 @@ fi
 if [ -d $HOME/.local/share/zinit/zinit.git ]; then
     printf "%s OhMyZsh zinit plugin is already installed\n" $EMOJI_SUCCESS
 else
+    # Zinit
     printf "%s Installing OhMyZsh %szinit plugin%s...\n" $EMOJI_OMZ_PLUGIN $GREEN $RESET
     CMD='sh -c "export NO_INPUT=yes; $(curl -fsSL https://git.io/zinit-install)"'
     echo "${GREEN}${CMD}${RESET}"
     eval $CMD || exit 2
     # Syntax highlighting plugin
+    echo "" >> $HOME/.zshrc
     CMD="echo 'zinit light zdharma-continuum/fast-syntax-highlighting' >> $HOME/.zshrc"
     echo "${GREEN}${CMD}${RESET}"
     eval $CMD
@@ -230,6 +232,10 @@ else
     CMD="echo 'zinit light zsh-users/zsh-completions' >> $HOME/.zshrc"
     echo "${GREEN}${CMD}${RESET}"
     eval $CMD
+    # Auto update plugin
+    # CMD="git clone https://github.com/TamCore/autoupdate-oh-my-zsh-plugins $ZSH_CUSTOM/plugins/autoupdate"
+    # echo "${GREEN}${CMD}${RESET}"
+    # eval $CMD
     echo ""
 fi
 
@@ -273,7 +279,7 @@ fi
 if [[ $(which zsh) == $SHELL ]]; then
     printf "%s ZSH is already your default shell\n" $EMOJI_SUCCESS
 else
-    echo -n "${YELLOW}Do you want to change your default shell to zsh? ${RESET}(y/n) "
+    echo -n "${EMOJI_WARNING} ${YELLOW}Do you want to change your default shell to zsh? ${RESET}(y/n) "
     read ANSWER
     if [[ $ANSWER =~ ^[yY]$ ]]; then
         CMD='chsh -s $(which zsh)'
@@ -286,28 +292,35 @@ else
     fi
 fi
 
-# Conclusion
+# Finishing
 printf "\n"
-printf "╔═════════════════════════════════════════════════════╗\n"
-printf "║            🥳 🎉  %sCONGRATULATIONS%s  🎉 🥳            ║\n" $BOLD $RESET
-printf "║                                                     ║\n"
-printf "║             All tasks ran successfully              ║\n"
-printf "║                                                     ║\n"
-printf "║ → To use ngrok properly consider to execute:        ║\n"
-printf "║      %sngrok authtoken <your-personal-token>%s          ║\n" $YELLOW $RESET
-printf "║                                                     ║\n"
-printf "║ → To know more about Dracula themes:                ║\n"
-printf "║   %s %shttps://draculatheme.com/terminator%s            ║\n" $EMOJI_DRACULA $YELLOW $RESET
-printf "║                                                     ║\n"
-printf "╚═════════════════════════════════════════════════════╝\n"
+printf "╔═══════════════════════════════════════════════════════════════════╗\n"
+printf "║                   🥳 🎉  %sCONGRATULATIONS%s  🎉 🥳                   ║\n" $BOLD $RESET
+printf "║                    All tasks ran successfully                     ║\n"
+printf "║                                                                   ║\n"
+printf "║ → In order to use ngrok properly consider to execute:             ║\n"
+printf "║   %sngrok authtoken <your-personal-token>%s                           ║\n" $YELLOW $RESET
+printf "║                                                                   ║\n"
+printf "║ → To know more about OMZ spaceship theme:                         ║\n"
+printf "║   %shttps://github.com/spaceship-prompt/spaceship-prompt%s            ║\n" $BLUE $RESET
+printf "║                                                                   ║\n"
+printf "║ → To know more about OMZ plugins installed:                       ║\n"
+printf "║   • %shttps://github.com/zdharma-continuum/zinit%s                    ║\n" $BLUE $RESET
+printf "║   • %shttps://github.com/zdharma-continuum/fast-syntax-highlighting%s ║\n" $BLUE $RESET
+printf "║   • %shttps://github.com/zsh-users/zsh-autosuggestions%s              ║\n" $BLUE $RESET
+printf "║   • %shttps://github.com/zsh-users/zsh-completions%s                  ║\n" $BLUE $RESET
+printf "║   • %shttps://github.com/TamCore/autoupdate-oh-my-zsh-plugins%s       ║\n" $BLUE $RESET
+printf "║                                                                   ║\n"
+printf "║ → To know more about Dracula themes:                              ║\n"
+printf "║   %s %shttps://draculatheme.com/terminator%s                          ║\n" $EMOJI_DRACULA $BLUE $RESET
+printf "║                                                                   ║\n"
+printf "╚═══════════════════════════════════════════════════════════════════╝\n"
 printf "\n"
 
 echo "$EMOJI_WARNING To some changes take effect you'll need to restart computer!"
-echo -n "${YELLOW}Restart now? ${RESET}(y/n) "
-read ANSWER
+echo -n "${YELLOW}Restart now? ${RESET}(y/n) "; read ANSWER;
 if [[ $ANSWER =~ ^[yY]$ ]]; then
     sudo shutdown -r now
 fi
 
-echo ""
 exit 0;
