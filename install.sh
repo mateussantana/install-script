@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 
-# ref: https://github.com/freekmurze/dotfiles/blob/main/installscript
-# ref: https://github.com/freekmurze/dotfiles/blob/main/bootstrap
-# ref: https://github.com/laravel/sail/blob/1.x/bin/sail
-# ref: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
-
 # Setup colors
 RED=`printf '\033[31m'`
 GREEN=`printf '\033[32m'`
@@ -232,10 +227,10 @@ else
     CMD="echo 'zinit light zsh-users/zsh-completions' >> $HOME/.zshrc"
     echo "${GREEN}${CMD}${RESET}"
     eval $CMD
-    # Auto update plugin
-    # CMD="git clone https://github.com/TamCore/autoupdate-oh-my-zsh-plugins $ZSH_CUSTOM/plugins/autoupdate"
-    # echo "${GREEN}${CMD}${RESET}"
-    # eval $CMD
+    # My custom aliases plugin
+    CMD="echo 'zinit light mateussantana/ohmyzsh-custom-funcalias' >> $HOME/.zshrc"
+    echo "${GREEN}${CMD}${RESET}"
+    eval $CMD
     echo ""
 fi
 
@@ -247,7 +242,7 @@ else
     CMD='sudo add-apt-repository ppa:ondrej/php -y'
     echo "${GREEN}${CMD}${RESET}" 
     $CMD || exit 2
-    CMD='sudo apt-get install php8.1-cli -y'
+    CMD='sudo apt-get install php8.1-cli php8.1-dom php8.1-curl php8.1-mbstring php8.1-zip -y'
     echo "${GREEN}${CMD}${RESET}" 
     $CMD || exit 2
     echo ""
@@ -309,7 +304,7 @@ printf "║   • %shttps://github.com/zdharma-continuum/zinit%s                
 printf "║   • %shttps://github.com/zdharma-continuum/fast-syntax-highlighting%s ║\n" $BLUE $RESET
 printf "║   • %shttps://github.com/zsh-users/zsh-autosuggestions%s              ║\n" $BLUE $RESET
 printf "║   • %shttps://github.com/zsh-users/zsh-completions%s                  ║\n" $BLUE $RESET
-printf "║   • %shttps://github.com/TamCore/autoupdate-oh-my-zsh-plugins%s       ║\n" $BLUE $RESET
+printf "║   • %shttps://github.com/mateussantana/ohmyzsh-custom-funcalias%s     ║\n" $BLUE $RESET
 printf "║                                                                   ║\n"
 printf "║ → To know more about Dracula themes:                              ║\n"
 printf "║   %s %shttps://draculatheme.com/terminator%s                          ║\n" $EMOJI_DRACULA $BLUE $RESET
