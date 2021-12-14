@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# Check if is in a interactive mode
+# If not, assumes yes for all confirmations
+tty -s && TTY='yes'
+[[ -z $TTY ]] && ANSWER='y'
+
 # Setup colors
 RED=`printf '\033[31m'`
 GREEN=`printf '\033[32m'`
@@ -37,14 +42,14 @@ fi
 if  [[ ! "$(uname -v)" =~ "Ubuntu" ]]; then
     echo "$EMOJI_WARNING ${BLUE}Seems like you are not using a Ubuntu distribution. This script just was tested on Ubuntu.${RESET}"
     echo -n "${YELLOW}Are you want to proceed anyway? ${RESET}(y/n) "
-    read ANSWER
+    [[ -n $TTY ]] && read ANSWER
     if [[ ! $ANSWER =~ ^[yY]$ ]]; then
         echo "Aborted!"
         exit 0
     fi
 
     echo -n "${YELLOW}Are you really sure? ${RESET}(y/n) "
-    read ANSWER
+    [[ -n $TTY ]] && read ANSWER
     if [[ ! $ANSWER =~ ^[yY]$ ]]; then
         echo "Aborted!"
         exit 0
@@ -73,7 +78,7 @@ printf "╚═══════════════════════
 
 # Confirm to proceed
 echo -n "${YELLOW}Are you want to proceed? ${RESET}(y/n) "
-read ANSWER
+[[ -n $TTY ]] && read ANSWER
 if [[ ! $ANSWER =~ ^[yY]$ ]]; then
     echo "Ok. Aborted!"
     exit 0
@@ -114,6 +119,7 @@ if which terminator > /dev/null 2>&1; then
 else
     printf "%s Installing %sTerminator%s...\n" $EMOJI_TERMINATOR $GREEN $RESET
     CMD='sudo apt-get install terminator -y'
+    [[ -z $TTY ]] && CMD+='q'
     echo "${GREEN}${CMD}${RESET}"
     $CMD || exit 2
     # Terminator custom config with dracula theme
@@ -275,7 +281,7 @@ if [[ $(which zsh) == $SHELL ]]; then
     printf "%s ZSH is already your default shell\n" $EMOJI_SUCCESS
 else
     echo -n "${EMOJI_WARNING} ${YELLOW}Do you want to change your default shell to zsh? ${RESET}(y/n) "
-    read ANSWER
+    [[ -n $TTY ]] && read ANSWER
     if [[ $ANSWER =~ ^[yY]$ ]]; then
         CMD='chsh -s $(which zsh)'
         echo "${GREEN}${CMD}${RESET}"
@@ -313,9 +319,12 @@ printf "╚═══════════════════════
 printf "\n"
 
 echo "$EMOJI_WARNING To some changes take effect you'll need to restart computer!"
-echo -n "${YELLOW}Restart now? ${RESET}(y/n) "; read ANSWER;
-if [[ $ANSWER =~ ^[yY]$ ]]; then
-    sudo shutdown -r now
+if [[ -n $TTY ]]; then
+    echo -n "${YELLOW}Restart now? ${RESET}(y/n) ";
+    read ANSWER;
+    if [[ $ANSWER =~ ^[yY]$ ]]; then
+        sudo shutdown -r now
+    fi
 fi
 
 exit 0;
