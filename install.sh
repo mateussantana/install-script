@@ -118,8 +118,8 @@ if which terminator > /dev/null 2>&1; then
     printf "%s Terminator is already installed\n" $EMOJI_SUCCESS
 else
     printf "%s Installing %sTerminator%s...\n" $EMOJI_TERMINATOR $GREEN $RESET
-    CMD='sudo apt-get install terminator -y'
-    [[ -z $TTY ]] && CMD+='q'
+    [[ -n $TTY ]] && CMD='sudo apt-get install terminator -y'
+    [[ -z $TTY ]] && CMD='sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends terminator'
     echo "${GREEN}${CMD}${RESET}"
     $CMD || exit 2
     # Terminator custom config with dracula theme
