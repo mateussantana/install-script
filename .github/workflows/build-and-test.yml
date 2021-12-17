@@ -1,0 +1,22 @@
+name: Test the installation script
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test:
+    name: Build docker image and run bash script
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Build docker image
+      run: docker build -t myubuntu .
+
+    - name: Run test
+      run: docker run --rm myubuntu bash install.sh
