@@ -216,6 +216,10 @@ fi
 if [ -d $HOME/.local/share/zinit/zinit.git ]; then
     printf "%s OhMyZsh zinit plugin is already installed\n" $EMOJI_SUCCESS
 else
+    # Setting up enabled plugins in .zshrc
+    CMD="sed -i '/^plugins=/c\plugins=(git composer docker docker-compose mateussantana)' ~/.zshrc"
+    echo "${GREEN}${CMD}${RESET}"
+    eval $CMD || exit 2
     # Zinit
     printf "%s Installing OhMyZsh %szinit plugin%s...\n" $EMOJI_OMZ_PLUGIN $GREEN $RESET
     CMD='sh -c "export NO_INPUT=yes; $(curl -fsSL https://git.io/zinit-install)"'
