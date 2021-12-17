@@ -69,7 +69,6 @@ printf "║  → Install %sDocker%s & %sdocker-compose%s                  ║\n"
 printf "║  → Install %sNgrok%s                                    ║\n" ${BOLD}${GREEN} $RESET
 printf "║  → Install %sZSH%s                                      ║\n" ${BOLD}${GREEN} $RESET
 printf "║  → Install %sOhMyZsh%s and %sspaceship theme%s              ║\n" ${BOLD}${GREEN} $RESET ${BOLD}${GREEN} $RESET
-printf "║  → Install %sOhMyZsh theme%s (spaceship)                ║\n" ${BOLD}${GREEN} $RESET
 printf "║  → Install %sOhMyZsh plugins%s                          ║\n" ${BOLD}${GREEN} $RESET
 printf "║  → Install %sPHP 8.1%s                                  ║\n" ${BOLD}${GREEN} $RESET
 printf "║  → Install %sComposer%s                                 ║\n" ${BOLD}${GREEN} $RESET
