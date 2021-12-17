@@ -1,4 +1,4 @@
-FROM ubuntu:21.10
+FROM ubuntu:20.04
 
 ARG NEWUSER_NAME=ubuntu
 ARG NEWUSER_PSWD=ubuntu
@@ -8,6 +8,8 @@ COPY . /tmp/${SCRIPT_FOLDER}
 
 RUN	apt-get update && \
     apt-get install -y sudo && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y keyboard-configuration && \
     apt-get autoremove -y && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*; \
