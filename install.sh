@@ -68,8 +68,7 @@ printf "║  → Install %sTerminator%s (with dracula theme)          ║\n" ${B
 printf "║  → Install %sDocker%s & %sdocker-compose%s                  ║\n" ${BOLD}${GREEN} $RESET ${BOLD}${GREEN} $RESET
 printf "║  → Install %sNgrok%s                                    ║\n" ${BOLD}${GREEN} $RESET
 printf "║  → Install %sZSH%s                                      ║\n" ${BOLD}${GREEN} $RESET
-printf "║  → Install %sOhMyZsh%s                                  ║\n" ${BOLD}${GREEN} $RESET
-printf "║  → Install %sOhMyZsh theme%s (spaceship)                ║\n" ${BOLD}${GREEN} $RESET
+printf "║  → Install %sOhMyZsh%s and %sspaceship theme%s              ║\n" ${BOLD}${GREEN} $RESET ${BOLD}${GREEN} $RESET
 printf "║  → Install %sOhMyZsh plugins%s                          ║\n" ${BOLD}${GREEN} $RESET
 printf "║  → Install %sPHP 8.1%s                                  ║\n" ${BOLD}${GREEN} $RESET
 printf "║  → Install %sComposer%s                                 ║\n" ${BOLD}${GREEN} $RESET
@@ -97,7 +96,9 @@ echo ""
 CMD='sudo apt-get update'
 echo "${GREEN}${CMD}${RESET}"
 $CMD || exit 2
-CMD='sudo apt-get install software-properties-common curl fonts-firacode -y'
+CMD='sudo apt-get install -y software-properties-common curl fonts-firacode'
+## Dependencies for Vitals gnome extension: https://github.com/corecoding/Vitals#installation
+CMD+=' gir1.2-gtop-2.0 lm-sensors'
 echo "${GREEN}${CMD}${RESET}"
 $CMD || exit 2
 echo ""
@@ -300,10 +301,10 @@ printf "║                   🥳 🎉  %sCONGRATULATIONS%s  🎉 🥳         
 printf "║                    All tasks ran successfully                     ║\n"
 printf "║                                                                   ║\n"
 printf "║ → In order to use ngrok properly consider to execute:             ║\n"
-printf "║   %sngrok authtoken <your-personal-token>%s                           ║\n" $YELLOW $RESET
+printf "║   • %sngrok authtoken <your-personal-token>%s                         ║\n" $YELLOW $RESET
 printf "║                                                                   ║\n"
 printf "║ → To know more about OMZ spaceship theme:                         ║\n"
-printf "║   %shttps://github.com/spaceship-prompt/spaceship-prompt%s            ║\n" $BLUE $RESET
+printf "║   • %shttps://github.com/spaceship-prompt/spaceship-prompt%s          ║\n" $BLUE $RESET
 printf "║                                                                   ║\n"
 printf "║ → To know more about OMZ plugins installed:                       ║\n"
 printf "║   • %shttps://github.com/zdharma-continuum/zinit%s                    ║\n" $BLUE $RESET
