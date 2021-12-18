@@ -17,7 +17,7 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/mateussantana/install-sc
 
 *or...*
 
-Cloning this repository (needs `git`) and running ``script.sh``:
+Cloning this repository (needs `git`) and running ``install.sh``:
 ```bash
 git clone https://github.com/mateussantana/install-script.git
 cd install-script/ && ./install.sh

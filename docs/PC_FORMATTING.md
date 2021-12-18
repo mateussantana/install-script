@@ -29,12 +29,12 @@
 # #Linux
 > Ubuntu 21.10 ---> SSD Satas
 
-## 1. Pré formatting
+## 1. Pre formatting
 
 ### Backups
 - [x] Laravel projects: databases (docker)
-- [x] Laravel projects: *.env* files
-- [x] SSH keys & configs
+- [x] Laravel projects: `.env` files
+- [x] SSH keys & configs `~/.ssh/`
 - [x] Credentials aws/azure
 - [x] Opened chrome tabs
 
@@ -70,7 +70,7 @@
 	- [x] [Composer](https://getcomposer.org/download/) `*`
 
 ### Configs
-- [x] [Gnome extensions](https://extensions.gnome.org/)
+- [x] [Gnome extensions:](https://extensions.gnome.org/)
 	- [x] [SerMon Service Monitor](https://extensions.gnome.org/extension/1804/sermon/)
 	- [x] [Sound Input & Output Device Chooser](https://extensions.gnome.org/extension/906/sound-output-device-chooser/)
 	- [x] [Time++](https://extensions.gnome.org/extension/1238/time/)
