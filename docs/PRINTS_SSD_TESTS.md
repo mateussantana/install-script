@@ -1,6 +1,6 @@
 # Testes SSD
 
-Testes de leitura e escrita realizados com os SSDs em 27/11/2021
+Benchmark tests on my SSDs (27/nov/2021)
 
 1. SSD Nvme Asgard 1 TB:
 ![SSD Nvme 1TB](/docs/images/ssd-nvme-1tb.jpeg)
@@ -14,7 +14,7 @@ Testes de leitura e escrita realizados com os SSDs em 27/11/2021
 4. SSD Sata Kingston 240 GB (2):
 ![SSD Sata 240GB (2)](/docs/images/ssd-kingston-240gb-b.jpeg)
 
-5. 2x SSD Sata Kingston 240 em RAID 0:
+5. 2x SSD Sata Kingston 240 GB - RAID 0:
 ![SSD Sata Raid 0](/docs/images/2x-ssd-kingston-240gb-raid0.jpeg)
 
 6. SSD Nvme Dell G15 (Elis):

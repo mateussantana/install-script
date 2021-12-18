@@ -1,126 +1,50 @@
+# My Installation Script
+
+This is a shell script to automate the installation of most packages and softwares used by me to develop in a Linux environment. Feel free to clone or fork this repository and adapt to your needs!
 
 
+## 🚧 Disclaimer
 
-# #Windows
-> Windows 10  ---> SSD Nvme de 1 TB
-
-### Backups
-- [ ] Documentos
-- [ ] Downloads (?)
-
-### Drivers
-- [ ] Nvdia GTX 970
-- [ ] Teclado Corsair
-- [ ] Mouse Logitech G600 (pendrive)
-
-### Softwares
-- [ ] [Google chrome](https://www.google.pt/intl/pt-PT/chrome/)
-- [ ] [Steam](https://store.steampowered.com/)
-- [ ] [Origin](https://www.origin.com/bra/pt-br/store/download)
-- [ ] [Epic Games](https://www.epicgames.com/store/pt-BR/)
-- [ ] [Ubisoft](https://ubisoftconnect.com/pt-BR/)
-- [ ] [Discord](https://discord.com/download)
-- [ ] [Whatsapp](https://www.whatsapp.com/download)
-- [ ] [Nvidia Geforce Experience](https://www.nvidia.com/pt-br/geforce/geforce-experience/)
-
-### Configs
-- [ ] Atualizações windows
-- [ ] Verificar as entradas de inicialização com o sistema
-- [ ] Executar limpeza após atualizações windows update
+Tested **only** on a fresh installation of **[Ubuntu](https://ubuntu.com/download/desktop)**. More specifically on Ubuntu 20.04 LTS and Ubuntu 21.10.
 
 
-# #Linux
-> Ubuntu 21.10 ---> SSD Sata de 480 GB
+## 💿 Installation
 
-## 1. Pré formatação
+You can just run this single command on a shell (needs `curl`):
+```bash
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/mateussantana/install-script/master/install.sh)"
+```
 
-### Backups
-- [ ] Laravel projects: databases (docker)
-- [ ] Laravel projects: arquivos *.env*
-- [ ] SSH keys & configs
-- [ ] Credenciais aws/azure
-- [ ] Abas do chrome (?)
+*or...*
 
-## 2. Pós formatação
-
-### Drivers
-- [ ] Nvidia GTX 970
-
-### Softwares
-- UI (can be installed via Ubuntu Software app)
-	- [ ] [Google Chrome](https://www.google.pt/intl/pt-PT/chrome/)
-	- [ ] PhpStorm
-	- [ ] [Ray](https://spatie.be/profile/purchases)
-	- [ ] DataGrip
-	- [ ] VS Code
-	- [ ] Discord
-	- [ ] Postman
-	- [ ] RDM (redis ui)
-	- [ ] Terminator
-	- [ ] Spotify
-	- [ ] Steam (?)
-	- [ ] Libre Office
-	- [ ] Gimp
-	- [ ] Menu Editor
-	- [ ] Ajustes (tweak)
-- CLI
-	- [ ] Git
-	- [ ] [Docker](https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script) & [Docker Compose](https://docs.docker.com/compose/install/)
-		```bash
-		# docker
-		curl -fsSL https://get.docker.com -o get-docker.sh
-		sudo sh get-docker.sh
-		sudo groupadd docker
-		sudo usermod -aG docker $USER
-		# docker-compose
-		sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-		sudo chmod +x /usr/local/bin/docker-compose
-		```
-	- [ ] [Ngrok](https://ngrok.com/download)
-		```bash
-		curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null
-		echo "deb https://ngrok-agent.s3.amazonaws.com buster main" | sudo tee /etc/apt/sources.list.d/ngrok.list
-		sudo apt update && sudo apt install ngrok   
-              
-		ngrok authtoken <token>
-		```
-	- [ ] [ZSH](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH) & [OhMyZsh](https://github.com/ohmyzsh/ohmyzsh) & [Temas e fontes](https://blog.rocketseat.com.br/terminal-com-oh-my-zsh-spaceship-dracula-e-mais/)
-		```bash
-		# zsh
-		sudo apt install zsh
-		chsh -s $(which zsh)
-		# ohmyzsh
-		sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-		```
-	- [ ] [OMZ Dracula theme](https://draculatheme.com/terminator)
-		```bash
-		git clone https://github.com/dracula/terminator.git
-		cd terminator && ./install.sh
-		```
-
-### Configs
-- [ ] [Gnome extensions](https://extensions.gnome.org/)
-	- [ ] [Vitals System Monitor](https://extensions.gnome.org/extension/1460/vitals/)
-		```bash
-		# https://github.com/corecoding/Vitals#installation
-		sudo apt install gir1.2-gtop-2.0 lm-sensors
-		```
-	- [ ] [SerMon Service Monitor](https://extensions.gnome.org/extension/1804/sermon/)
-	- [ ] [Sound Input & Output Device Chooser](https://extensions.gnome.org/extension/906/sound-output-device-chooser/)
-	- [ ] [Time++](https://extensions.gnome.org/extension/1238/time/)
-- [ ] SSH keys & configs (backup)
-- [ ] Docker aliases (composer, php, node)
-- [ ] Aliases (em construção: meu repositório github)
+Cloning this repository (needs `git`) and running ``script.sh``:
+```bash
+git clone https://github.com/mateussantana/install-script.git
+cd install-script/ && ./install.sh
+rm -rf ../install-script
+```
 
 
-# #Observações
-- Bios Storage mode: UEFI only
-- Mobo drivers: [Aorus B450 Pro Wi-fi](https://www.gigabyte.com/br/Motherboard/B450-AORUS-PRO-WIFI-rev-1x/support#support-dl)
-- Ordem de instalação: Windows ---> Linux
-- RAID 0: Não consegui fazer o ubuntu enxergar o array raid. Windows funcionou normalmente)
-	- Vídeo de referência: <https://www.youtube.com/watch?v=IUNtbe9Az9o>;
-	- [Prints com testes nos SSDs](/docs/PRINTS_SSD_TESTS.md).
-- Limitações das portas SATA3:
-	- Ao utilizar a porta M2A (slot de cima) as portas ASATA3-0 e ASATA3-1 (as duas de frente) são desabilitadas;
-	- Ao utilizar a porta M2B (slot de baixo) as portas SATA3-2 e SATA3-3 (laterais superiores) são desabilitadas.
-	[![SATA3 limitações](/docs/images/limitacao-sata-ports.png)](https://www.gigabyte.com/br/Motherboard/B450-AORUS-PRO-WIFI-rev-1x/support#support-manual)
+## 📝 List of applications to be installed
+
+The following changes and applications will be installed:
+
+- Some system dependencies like `curl` and `Firacode font`
+- [Git](https://git-scm.com/)
+- [Terminator](https://terminator-gtk3.readthedocs.io/en/latest) (terminal)
+- [Docker](https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script) and [docker-compose](https://docs.docker.com/compose/install)
+- [Ngrok](https://ngrok.com) (localhost tunneling)
+- [ZSH](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH) shell
+- [OhMyZsh](https://github.com/ohmyzsh/ohmyzsh) and [Spaceship theme](https://github.com/spaceship-prompt/spaceship-prompt)
+- OhMyZsh plugins:
+  - [Zinit](https://github.com/zdharma-continuum/zinit)
+  - [Syntax highlighting](https://github.com/zdharma-continuum/fast-syntax-highlighting)
+  - [Autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
+  - [Completions](https://github.com/zsh-users/zsh-completions)
+  - [My custom plugin](https://github.com/mateussantana/ohmyzsh-custom-funcalias)
+- [PHP 8.1](https://www.php.net/downloads.php#v8.1.1) and most used extensions
+- [Composer](https://getcomposer.org/download/) (php package manager)
+- Set your default shell to ``zsh``
+
+
+###### [Here is a walkthrough about my specific Windows and Linux installation scenario while pc formatting](docs/PC_FORMATTING.md)
