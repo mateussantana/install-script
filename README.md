@@ -57,12 +57,16 @@ docker build -t install-script .
 docker run --rm install-script bash install.sh
 ```
 
+*or...*
+
 ```bash
 # Run test interactively as a regular system user
 # user: ubuntu
 # password: ubuntu
 docker run --rm -it -u ubuntu:ubuntu install-script bash install.sh
 ```
+
+*or...*
 
 ```bash
 # Map current work directory to container and run test as you go

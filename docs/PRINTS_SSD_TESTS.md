@@ -1,4 +1,4 @@
-# Testes SSD
+# Tests on my SSDs
 
 Benchmark tests on my SSDs (27/nov/2021)
 
