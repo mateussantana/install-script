@@ -47,4 +47,27 @@ The following changes and applications will be installed:
 - Set your default shell to ``zsh``
 
 
+## 🏗️ Editing and testing
+
+If you want to adapt this installation script to your needs, consider to use docker to test.
+
+```bash
+# Build docker image and run test non interactively as root
+docker build -t install-script .
+docker run --rm install-script bash install.sh
+```
+
+```bash
+# Run test interactively as a regular system user
+# user: ubuntu
+# password: ubuntu
+docker run --rm -it -u ubuntu:ubuntu install-script bash install.sh
+```
+
+```bash
+# Map current work directory to container and run test as you go
+docker run --rm -it -v $PWD:/home/ubuntu/install-script -u ubuntu:ubuntu install-script
+```
+
+
 ###### [Here is a walkthrough about my specific Windows and Linux installation scenario while pc formatting](docs/PC_FORMATTING.md)

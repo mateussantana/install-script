@@ -2,9 +2,7 @@ FROM ubuntu:20.04
 
 ARG NEWUSER_NAME=ubuntu
 ARG NEWUSER_PSWD=ubuntu
-ARG SCRIPT_FOLDER=install-script
-
-COPY . /tmp/${SCRIPT_FOLDER}
+ARG SCRIPT_FOLDER=/home/${NEWUSER_NAME}/install-script
 
 RUN	apt-get update && \
     apt-get install -y sudo && \
@@ -15,8 +13,9 @@ RUN	apt-get update && \
     rm -rf /var/lib/apt/lists/*; \
     adduser --disabled-password --gecos "" ${NEWUSER_NAME} && \
     adduser ${NEWUSER_NAME} sudo && \
-    echo "${NEWUSER_NAME}:${NEWUSER_PSWD}" | chpasswd && \
-    mv /tmp/${SCRIPT_FOLDER} /home/${NEWUSER_NAME} && \
-    chown ${NEWUSER_NAME}:${NEWUSER_NAME} /home/${NEWUSER_NAME} -R
+    echo "${NEWUSER_NAME}:${NEWUSER_PSWD}" | chpasswd
 
-WORKDIR /home/${NEWUSER_NAME}/${SCRIPT_FOLDER}
+COPY . ${SCRIPT_FOLDER}
+RUN chown ${NEWUSER_NAME}:${NEWUSER_NAME} /home/${NEWUSER_NAME} -R
+
+WORKDIR ${SCRIPT_FOLDER}
