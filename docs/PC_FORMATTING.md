@@ -66,6 +66,7 @@
 	- [x] [Docker](https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script) & [Docker Compose](https://docs.docker.com/compose/install/) `*`
 	- [x] [Ngrok](https://ngrok.com/download) `*`
 	- [x] [ZSH](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH) & [OhMyZsh](https://github.com/ohmyzsh/ohmyzsh) `*`
+	- [x] Node.js `*`
 	- [x] PHP cli `*`
 	- [x] [Composer](https://getcomposer.org/download/) `*`
 
