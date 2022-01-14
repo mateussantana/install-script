@@ -28,6 +28,7 @@ EMOJI_TERMINATOR=🖥
 EMOJI_OMZ=🧙
 EMOJI_OMZ_THEME=🎭
 EMOJI_OMZ_PLUGIN=🔌
+EMOJI_NODEJS=✨
 EMOJI_PHP=🐘
 EMOJI_COMPOSER=🪄
 
@@ -70,6 +71,7 @@ printf "║  → Install %sNgrok%s                                    ║\n" ${B
 printf "║  → Install %sZSH%s                                      ║\n" ${BOLD}${GREEN} $RESET
 printf "║  → Install %sOhMyZsh%s and %sspaceship theme%s              ║\n" ${BOLD}${GREEN} $RESET ${BOLD}${GREEN} $RESET
 printf "║  → Install %sOhMyZsh plugins%s                          ║\n" ${BOLD}${GREEN} $RESET
+printf "║  → Install %sNode.js%s                                  ║\n" ${BOLD}${GREEN} $RESET
 printf "║  → Install %sPHP 8.1%s                                  ║\n" ${BOLD}${GREEN} $RESET
 printf "║  → Install %sComposer%s                                 ║\n" ${BOLD}${GREEN} $RESET
 printf "║  → Set your default shell to %szsh%s                    ║\n" ${BOLD}${GREEN} $RESET
@@ -217,7 +219,7 @@ if [ -d $HOME/.local/share/zinit/zinit.git ]; then
     printf "%s OhMyZsh zinit plugin is already installed\n" $EMOJI_SUCCESS
 else
     # Setting up enabled plugins in .zshrc
-    CMD="sed -i '/^plugins=/c\plugins=(git composer docker docker-compose)' ~/.zshrc"
+    CMD="sed -i '/^plugins=/c\plugins=(git composer node npm yarn docker docker-compose)' ~/.zshrc"
     echo "${GREEN}${CMD}${RESET}"
     eval $CMD || exit 2
     # Zinit
@@ -242,6 +244,23 @@ else
     CMD="echo 'zinit light mateussantana/ohmyzsh-custom-funcalias' >> $HOME/.zshrc"
     echo "${GREEN}${CMD}${RESET}"
     eval $CMD
+    echo ""
+fi
+
+# Node.js 16 LTS
+if $(node --version > /dev/null 2>&1); then
+    printf "%s Node.js is already installed\n" $EMOJI_SUCCESS
+else
+    printf "%s Installing %sNode.js%s...\n" $EMOJI_NODEJS $GREEN $RESET
+    CMD='curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -'
+    echo "${GREEN}${CMD}${RESET}" 
+    eval $CMD || exit 2
+    CMD='sudo apt-get install -y nodejs'
+    echo "${GREEN}${CMD}${RESET}" 
+    $CMD || exit 2
+    CMD='sudo npm install --global yarn'
+    echo "${GREEN}${CMD}${RESET}" 
+    $CMD || exit 2
     echo ""
 fi
 
