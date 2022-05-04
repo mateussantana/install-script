@@ -12,6 +12,7 @@ Tested **only** on a fresh installation of **[Ubuntu](https://ubuntu.com/downloa
 
 You can just run this single command on a shell (needs `curl`):
 ```bash
+sudo apt-get install curl -y && \
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/mateussantana/install-script/master/install.sh)"
 ```
 
