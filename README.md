@@ -45,7 +45,7 @@ The following changes and applications will be installed:
   - [My custom plugin](https://github.com/mateussantana/ohmyzsh-custom-funcalias)
 - [Node.js 16 LTS](https://github.com/nodesource/distributions/blob/master/README.md#installation-instructions) and yarn
 - [PHP 8.1](https://www.php.net/downloads.php#v8.1.1) and most used extensions
-- [Composer](https://getcomposer.org/download/) (php package manager)
+- [Composer](https://getcomposer.org/download/) (php package manager) with laravel installer
 - Set your default shell to ``zsh``
 
 
