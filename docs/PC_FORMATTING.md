@@ -72,10 +72,9 @@
 
 ### Configs
 - [x] [Gnome extensions:](https://extensions.gnome.org/)
-	- [x] [SerMon Service Monitor](https://extensions.gnome.org/extension/1804/sermon/)
 	- [x] [Sound Input & Output Device Chooser](https://extensions.gnome.org/extension/906/sound-output-device-chooser/)
-	- [x] [Time++](https://extensions.gnome.org/extension/1238/time/)
 	- [x] [Vitals System Monitor](https://extensions.gnome.org/extension/1460/vitals/)
+	- [x] [Open Weather](https://extensions.gnome.org/extension/750/openweather/)
 		```bash
 		# https://github.com/corecoding/Vitals#installation
 		sudo apt install gir1.2-gtop-2.0 lm-sensors
