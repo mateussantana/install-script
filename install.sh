@@ -117,61 +117,48 @@ else
 fi
 
 # Terminator
-# if which terminator > /dev/null 2>&1; then
-#     printf "%s Terminator is already installed\n" $EMOJI_SUCCESS
-# else
-#     printf "%s Installing %sTerminator%s...\n" $EMOJI_TERMINATOR $GREEN $RESET
-#     [[ -n $TTY ]] && CMD='sudo apt-get install terminator -y'
-#     [[ -z $TTY ]] && CMD='sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends terminator'
-#     echo "${GREEN}${CMD}${RESET}"
-#     $CMD || exit 2
-#     # Terminator custom config with dracula theme
-#     CMD='mkdir -p ~/.config/terminator && '
-#     if [ -f "terminator.config" ]; then
-#         CMD+='cp -rf terminator.config ~/.config/terminator/config'
-#     else
-#         CMD+='curl -fsSL https://raw.githubusercontent.com/mateussantana/install-script/master/terminator.config -o ~/.config/terminator/config'
-#     fi
-#     echo "${GREEN}${CMD}${RESET}"
-#     eval $CMD || exit 2
-#     echo ""
-# fi
+if which terminator > /dev/null 2>&1; then
+    printf "%s Terminator is already installed\n" $EMOJI_SUCCESS
+else
+    printf "%s Installing %sTerminator%s...\n" $EMOJI_TERMINATOR $GREEN $RESET
+    [[ -n $TTY ]] && CMD='sudo apt-get install terminator -y'
+    [[ -z $TTY ]] && CMD='sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends terminator'
+    echo "${GREEN}${CMD}${RESET}"
+    $CMD || exit 2
+    # Terminator custom config with dracula theme
+    CMD='mkdir -p ~/.config/terminator && '
+    if [ -f "terminator.config" ]; then
+        CMD+='cp -rf terminator.config ~/.config/terminator/config'
+    else
+        CMD+='curl -fsSL https://raw.githubusercontent.com/mateussantana/install-script/master/terminator.config -o ~/.config/terminator/config'
+    fi
+    echo "${GREEN}${CMD}${RESET}"
+    eval $CMD || exit 2
+    echo ""
+fi
 
-# # Docker & Docker-compose
-# if $(docker --version > /dev/null 2>&1); then
-#     printf "%s Docker is already installed\n" $EMOJI_SUCCESS
-# else
-#     printf "%s Installing %sDocker%s...\n" $EMOJI_DOCKER $GREEN $RESET
-#     CMD='curl -fsSL https://get.docker.com -o /tmp/get-docker.sh'
-#     echo "${GREEN}${CMD}${RESET}"
-#     $CMD || exit 2
-#     CMD='sudo sh /tmp/get-docker.sh'
-#     echo "${GREEN}${CMD}${RESET}"
-#     $CMD || exit 2
-#     CMD='sudo groupadd docker; sudo usermod -aG docker $USER'
-#     echo "${GREEN}${CMD}${RESET}"
-#     eval $CMD
-#     CMD='sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose'
-#     echo "${GREEN}${CMD}${RESET}"
-#     eval $CMD || exit 2
-#     CMD='sudo chmod +x /usr/local/bin/docker-compose'
-#     echo "${GREEN}${CMD}${RESET}"
-#     $CMD || exit 2
-#     echo ""
-# fi
-
-# # Ngrok
-# if $(ngrok --version > /dev/null 2>&1); then
-#     printf "%s Ngrok is already installed\n" $EMOJI_SUCCESS
-# else
-#     printf "%s Installing %sNgrok%s...\n" $EMOJI_NGROK $GREEN $RESET
-#     CMD='curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null && '
-#     CMD+='echo "deb https://ngrok-agent.s3.amazonaws.com buster main" | sudo tee /etc/apt/sources.list.d/ngrok.list && '
-#     CMD+='sudo apt update && sudo apt install ngrok'
-#     echo "${GREEN}${CMD}${RESET}"
-#     eval $CMD || exit 2
-#     echo ""
-# fi
+# Docker & Docker-compose
+if $(docker --version > /dev/null 2>&1); then
+    printf "%s Docker is already installed\n" $EMOJI_SUCCESS
+else
+    printf "%s Installing %sDocker%s...\n" $EMOJI_DOCKER $GREEN $RESET
+    CMD='curl -fsSL https://get.docker.com -o /tmp/get-docker.sh'
+    echo "${GREEN}${CMD}${RESET}"
+    $CMD || exit 2
+    CMD='sudo sh /tmp/get-docker.sh'
+    echo "${GREEN}${CMD}${RESET}"
+    $CMD || exit 2
+    CMD='sudo groupadd docker; sudo usermod -aG docker $USER'
+    echo "${GREEN}${CMD}${RESET}"
+    eval $CMD
+    CMD='sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose'
+    echo "${GREEN}${CMD}${RESET}"
+    eval $CMD || exit 2
+    CMD='sudo chmod +x /usr/local/bin/docker-compose'
+    echo "${GREEN}${CMD}${RESET}"
+    $CMD || exit 2
+    echo ""
+fi
 
 # ZSH
 if $(zsh --version > /dev/null 2>&1); then
