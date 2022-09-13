@@ -22,7 +22,6 @@ EMOJI_DRACULA=🧛
 EMOJI_REFRESH=🔄
 EMOJI_GIT=🔀
 EMOJI_DOCKER=🐳
-EMOJI_NGROK=🆖
 EMOJI_ZSH=🐚
 EMOJI_TERMINATOR=🖥
 EMOJI_OMZ=🧙
@@ -67,7 +66,6 @@ printf "║  → Install some %ssystem dependencies%s                 ║\n" ${B
 printf "║  → Install %sGit%s                                      ║\n" ${BOLD}${GREEN} $RESET
 printf "║  → Install %sTerminator%s (with dracula theme)          ║\n" ${BOLD}${GREEN} $RESET
 printf "║  → Install %sDocker%s & %sdocker-compose%s                  ║\n" ${BOLD}${GREEN} $RESET ${BOLD}${GREEN} $RESET
-printf "║  → Install %sNgrok%s                                    ║\n" ${BOLD}${GREEN} $RESET
 printf "║  → Install %sZSH%s                                      ║\n" ${BOLD}${GREEN} $RESET
 printf "║  → Install %sOhMyZsh%s and %sspaceship theme%s              ║\n" ${BOLD}${GREEN} $RESET ${BOLD}${GREEN} $RESET
 printf "║  → Install %sOhMyZsh plugins%s                          ║\n" ${BOLD}${GREEN} $RESET
@@ -259,7 +257,7 @@ else
     CMD='sudo add-apt-repository ppa:ondrej/php -y'
     echo "${GREEN}${CMD}${RESET}" 
     $CMD || exit 2
-    CMD='sudo apt-get install php8.1-cli php8.1-dom php8.1-curl php8.1-mbstring php8.1-zip -y'
+    CMD='sudo apt-get install php8.1-cli php8.1-dom php8.1-curl php8.1-mbstring php8.1-zip php8.1-sqlite3 -y'
     echo "${GREEN}${CMD}${RESET}" 
     $CMD || exit 2
     echo ""
@@ -309,9 +307,6 @@ printf "\n"
 printf "╔═══════════════════════════════════════════════════════════════════╗\n"
 printf "║                   🥳 🎉  %sCONGRATULATIONS%s  🎉 🥳                   ║\n" $BOLD $RESET
 printf "║                    All tasks ran successfully                     ║\n"
-printf "║                                                                   ║\n"
-printf "║ → In order to use ngrok properly consider to execute:             ║\n"
-printf "║   • %sngrok authtoken <your-personal-token>%s                         ║\n" $YELLOW $RESET
 printf "║                                                                   ║\n"
 printf "║ → To know more about OMZ spaceship theme:                         ║\n"
 printf "║   • %shttps://github.com/spaceship-prompt/spaceship-prompt%s          ║\n" $BLUE $RESET
