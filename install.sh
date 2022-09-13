@@ -282,6 +282,9 @@ else
     echo "${GREEN}${CMD}${RESET}" 
     $CMD || (rm composer-setup.php && exit 2)
     rm composer-setup.php
+    CMD='composer global require laravel/installer'
+    echo "${GREEN}${CMD}${RESET}"
+    eval $CMD
     echo ""
 fi
 
