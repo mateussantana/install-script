@@ -73,6 +73,7 @@
 ### Configs
 - [x] [Gnome extensions:](https://extensions.gnome.org/)
 	- [x] [Sound Input & Output Device Chooser](https://extensions.gnome.org/extension/906/sound-output-device-chooser/)
+	- [x] [Bluetooth Quick Connect](https://extensions.gnome.org/extension/1401/bluetooth-quick-connect/)
 	- [x] [Vitals System Monitor](https://extensions.gnome.org/extension/1460/vitals/)
 	- [x] [Open Weather](https://extensions.gnome.org/extension/750/openweather/)
 		```bash
