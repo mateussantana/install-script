@@ -96,7 +96,7 @@ echo ""
 CMD='sudo apt-get update'
 echo "${GREEN}${CMD}${RESET}"
 $CMD || exit 2
-CMD='sudo apt-get install -y build-essential software-properties-common curl fonts-firacode'
+CMD='sudo apt-get install -y build-essential software-properties-common curl fonts-firacode htop'
 ## Dependencies for Vitals gnome extension: https://github.com/corecoding/Vitals#installation
 CMD+=' gir1.2-gtop-2.0 lm-sensors'
 echo "${GREEN}${CMD}${RESET}"

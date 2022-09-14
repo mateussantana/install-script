@@ -30,7 +30,7 @@ rm -rf ../install-script
 
 The following changes and applications will be installed:
 
-- Some system dependencies like `curl` and `Firacode font`
+- Some system dependencies like `curl`, `htop` and `Firacode font`
 - [Git](https://git-scm.com/)
 - [Terminator](https://terminator-gtk3.readthedocs.io/en/latest) (terminal)
 - [Docker](https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script) and [docker-compose](https://docs.docker.com/compose/install)
