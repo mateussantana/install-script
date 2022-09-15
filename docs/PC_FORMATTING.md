@@ -47,24 +47,21 @@
 - Prefer to download directly on vendor website:
 	- [x] [Google Chrome](https://www.google.pt/intl/pt-PT/chrome/)
 	- [x] [Ray](https://spatie.be/profile/purchases)
-	- [x] [Discord](https://discord.com/download)
+	- [x] [JetBrains Toolbox](https://www.jetbrains.com/pt-br/toolbox-app/) for PhpStorm IDE
 - Those can be installed via Ubuntu Software app:
-	- [x] PhpStorm
-	- [x] DataGrip
 	- [x] VS Code
 	- [x] Postman
 	- [x] RDM redis ui
 	- [x] Terminator `*`
 	- [x] Spotify
-	- [x] Steam
-	- [x] Libre Office
-	- [x] Gimp (snap)
+	- [x] Discord
+	- [x] Libre Office (Writer and Calc only)
+	- [x] Gimp
 	- [x] Menu Editor
 	- [x] Gnome tweak tools
 - CLI:
 	- [x] Git `*`
 	- [x] [Docker](https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script) & [Docker Compose](https://docs.docker.com/compose/install/) `*`
-	- [x] [Ngrok](https://ngrok.com/download) `*`
 	- [x] [ZSH](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH) & [OhMyZsh](https://github.com/ohmyzsh/ohmyzsh) `*`
 	- [x] Node.js `*`
 	- [x] PHP cli `*`
