@@ -30,6 +30,7 @@ EMOJI_OMZ_PLUGIN=🔌
 EMOJI_NODEJS=✨
 EMOJI_PHP=🐘
 EMOJI_COMPOSER=🪄
+EMOJI_JBTOOLBOX=🧰
 
 # Verify OS
 if  [[ ! "$(uname -s)" =~ "Linux" ]]; then
@@ -72,6 +73,7 @@ printf "║  → Install %sOhMyZsh plugins%s                          ║\n" ${B
 printf "║  → Install %sNode.js%s                                  ║\n" ${BOLD}${GREEN} $RESET
 printf "║  → Install %sPHP 8.1%s                                  ║\n" ${BOLD}${GREEN} $RESET
 printf "║  → Install %sComposer%s                                 ║\n" ${BOLD}${GREEN} $RESET
+printf "║  → Install %sJetBrains Toolbox%s (for PhpStorm IDE)     ║\n" ${BOLD}${GREEN} $RESET
 printf "║  → Set your default shell to %szsh%s                    ║\n" ${BOLD}${GREEN} $RESET
 printf "╚═════════════════════════════════════════════════════╝\n"
 
@@ -288,6 +290,25 @@ else
     echo ""
 fi
 
+# JetBrains Toolbox
+if [ -f /opt/jetbrains-toolbox/jetbrains-toolbox ]; then
+    printf "%s JetBrains Toolbox is already installed\n" $EMOJI_SUCCESS
+else
+    printf "%s Downloading %sJetBrains Toolbox%s...\n" $EMOJI_JBTOOLBOX $GREEN $RESET
+    CMD='mkdir /tmp/jbtb && '
+    CMD+='curl -fsSL https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.25.12999.tar.gz -o /tmp/jbtb/jbtb.tar.gz'
+    echo "${GREEN}${CMD}${RESET}"
+    eval $CMD || JBTB_FAILS='yes';
+    if [[ -z $JBTB_FAILS ]]; then
+        CMD='sudo mkdir /opt/jetbrains-toolbox && sudo chown $USER:$USER /opt/jetbrains-toolbox && '
+        CMD+='tar -xvzf /tmp/jbtb/jbtb.tar.gz -C /tmp/jbtb && mv /tmp/jbtb/jetbrains-* /tmp/jbtb/jetbrains-toolbox && '
+        CMD+='mv /tmp/jbtb/jetbrains-toolbox/* /opt/jetbrains-toolbox/'
+        echo "${GREEN}${CMD}${RESET}"
+        eval $CMD || JBTB_FAILS='yes';
+    fi
+    echo ""
+fi
+
 # Final adjustments
 if [[ $(which zsh) == $SHELL ]]; then
     printf "%s ZSH is already your default shell\n" $EMOJI_SUCCESS
@@ -325,6 +346,14 @@ printf "║ → To know more about Dracula themes:                              
 printf "║   %s %shttps://draculatheme.com/terminator%s                          ║\n" $EMOJI_DRACULA $BLUE $RESET
 printf "║                                                                   ║\n"
 printf "╚═══════════════════════════════════════════════════════════════════╝\n"
+printf "\n"
+
+if [[ -z $JBTB_FAILS ]]; then
+    printf "%s %sJetBrains Toolbox%s was downloaded and needs to be executed once to be added to the application menu. " $EMOJI_JBTOOLBOX $GREEN $RESET
+    printf "Execute at file:///opt/jetbrains-toolbox/ \n"
+else
+    printf "%s Error on downloading %sJetBrains Toolbox%s. Please do it manually at https://www.jetbrains.com/pt-br/toolbox-app/\n" $EMOJI_ERROR $GREEN $RESET
+fi
 printf "\n"
 
 echo "$EMOJI_WARNING To some changes take effect you'll need to restart computer!"
